@@ -30,7 +30,7 @@ const Calculator = function (digit1, digit2) {
                 default:
                     return document.write('Вы ввели неправильное действие')
             }
-            return document.write(result);
+            return document.write(`${this.digit1} ${this.operation} ${this.digit2} = ${result}`);
         }
     }
 }
@@ -38,4 +38,4 @@ const Calculator = function (digit1, digit2) {
 const sum = new Calculator(8,2);
 sum.start();
 sum.doCalculate();
-sum.Finish();
+sum.finish();
