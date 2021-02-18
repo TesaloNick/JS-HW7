@@ -142,6 +142,7 @@
 
 document.write('<br>Задание 5. Контакты.<br>')
 let counter = 0;
+let arrayContacts = [];
 const Contact = function(fullName, age, phone, email) {
     this.addContact = function(){
         counter++
@@ -149,6 +150,7 @@ const Contact = function(fullName, age, phone, email) {
         this.age = age;
         this.phone = phone;
         this.email = email;
+        arrayContacts.push(`<br>Контакт №${counter}.<br>Вас зовут ${this.fullName}.<br>Вам ${this.age} лет.<br>Ваш номер телефона: ${this.phone}.<br>Ваш адрес электронной почты: ${this.email}.<br>`)
     }
     this.checkContact = function() {
         if (this.age < 18) {
@@ -162,19 +164,20 @@ const Contact = function(fullName, age, phone, email) {
         }
     }
     this.showContact = function() {
-        document.write(`<br>Контакт №${counter}.<br>Вас зовут ${this.fullName}.<br>Вам ${this.age} лет.<br>Ваш номер телефона: ${this.phone}.<br>Ваш адрес электронной почты: ${this.email}.<br>`)
+        return document.write(`<br>Контакт №${counter}.<br>Вас зовут ${this.fullName}.<br>Вам ${this.age} лет.<br>Ваш номер телефона: ${this.phone}.<br>Ваш адрес электронной почты: ${this.email}.<br>`)
     }
     this.showAllContact = function() {
-        for (let i=)    
-        document.write(`<br>Контакт №${counter}.<br>Вас зовут ${this.fullName}.<br>Вам ${this.age} лет.<br>Ваш номер телефона: ${this.phone}.<br>Ваш адрес электронной почты: ${this.email}.<br>`)
+        document.write(arrayContacts.join(''))
     }
 }
 
 const jaMorant = new Contact('Ja Morant', 21, '+375 (29) 555-44-22', 'jaMorant@gmail.com')
 jaMorant.addContact()
 jaMorant.checkContact()
-jaMorant.showContact()
+// jaMorant.showContact()
 const johnKonchar = new Contact('John Konchar', 24, '+375 (29) 333-44-22', 'johnKonchar@gmail.com')
 johnKonchar.addContact()
 johnKonchar.checkContact()
-johnKonchar.showContact()
+// johnKonchar.showContact()
+const all = new Contact()
+all.showAllContact()
