@@ -91,51 +91,90 @@
 // coolKettle.start();
 // coolKettle.kettleBoil(25)
 
-document.write('<br>Задание 4. Машина.<br>')
-let distance = 0;
-const Car = function(model) {
-    this.number = number;
-    this.model = model;
-    this.inWork = false;
-    this.gear = 0;
-    this.start = function() {
-        this.inWork = true;
+// document.write('<br>Задание 4. Машина.<br>')
+// let distance = 0;
+// const Car = function(model) {
+//     this.model = model;
+//     this.inWork = false;
+//     this.gear = 0;
+//     this.start = function() {
+//         this.inWork = true;
+//     }
+//     this.finish = function() {
+//         this.inWork = false;
+//         return document.write(`${this.model} проехала  расстояние равное ${distance.toFixed(2)} км.<br>`);  
+//     }
+//     this.upShift = function(time, speed) {
+//         if (this.inWork === false){
+//             document.write('Машина не заведена.<br>');
+//         } else {
+//             this.gear++
+//             distance += (time / 60) * speed;
+//             // return document.write(`${this.model} на ${this.gear} передаче проехала вперед ${time} минут со скоростью ${speed} км/ч расстояние равное ${distance.toFixed(2)} км.<br>`);  
+//         }
+//     }
+//     this.downShift = function(time, speed) {
+//         if (this.inWork === false){
+//             document.write('Машина не заведена.<br>');
+//         } else {
+//             this.gear--
+//             distance += (time / 60) * speed;
+//             // return document.write(`${this.model} на ${this.gear} передаче проехала вперед ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);  
+//         }
+//     }
+//     this.reverseGear = function(time, speed){
+//         if (this.gear > 0) {
+//             document.write('Вы сломали коробку переключения перердач.<br>');
+//         } else {
+//             distance -= (time / 60) * speed;
+//             // return document.write(`${this.model} проехала назад ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);        
+//         }
+//     }
+// }
+// const A6 = new Car('Ауди А6')
+// A6.start();
+// A6.reverseGear(5,40)
+// A6.upShift(5, 10)
+// A6.upShift(5, 20)
+// A6.upShift(20, 20)
+// A6.downShift(5, 20)
+// A6.finish()
+
+document.write('<br>Задание 5. Контакты.<br>')
+let counter = 0;
+const Contact = function(fullName, age, phone, email) {
+    this.addContact = function(){
+        counter++
+        this.fullName = fullName;
+        this.age = age;
+        this.phone = phone;
+        this.email = email;
     }
-    this.finish = function() {
-        this.inWork = false;
-        return document.write(`${this.model} проехала  расстояние равное ${distance.toFixed(2)} км.<br>`);  
-    }
-    this.upShift = function(time, speed) {
-        if (this.inWork === false){
-            document.write('Машина не заведена.<br>');
-        } else {
-            this.gear++
-            distance += (time / 60) * speed;
-            // return document.write(`${this.model} на ${this.gear} передаче проехала вперед ${time} минут со скоростью ${speed} км/ч расстояние равное ${distance.toFixed(2)} км.<br>`);  
+    this.checkContact = function() {
+        if (this.age < 18) {
+            alert(`Вам нет 18 лет.<br>`)
+        }
+        if (!/(^\+375|^80)( |)(\(|)(33|44|29)(\)|)( |)(\d{7}|\d{3}(-\d{2}){2})/g.test(this.phone)){
+            alert('Вы ввели номер телефона в неправильном формате')
+        }
+        if (!/^[a-zA-Z][a-zA-Z0-9]+\@[\w\.\-]+\.\w{2,11}/g.test(this.email)){
+            alert('Вы ввели адрес электронной почты в неправильном формате')
         }
     }
-    this.downShift = function(time, speed) {
-        if (this.inWork === false){
-            document.write('Машина не заведена.<br>');
-        } else {
-            this.gear--
-            distance += (time / 60) * speed;
-            // return document.write(`${this.model} на ${this.gear} передаче проехала вперед ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);  
-        }
+    this.showContact = function() {
+        document.write(`<br>Контакт №${counter}.<br>Вас зовут ${this.fullName}.<br>Вам ${this.age} лет.<br>Ваш номер телефона: ${this.phone}.<br>Ваш адрес электронной почты: ${this.email}.<br>`)
     }
-    this.reverseGear = function(time, speed){
-        if (this.gear > 0) {
-            document.write('Вы сломали коробку переключения перердач.<br>');
-        } else {
-            distance += (time / 60) * speed;
-            // return document.write(`${this.model} проехала назад ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);        
-        }
+    this.showAllContact = function() {
+        for (let i=)    
+        document.write(`<br>Контакт №${counter}.<br>Вас зовут ${this.fullName}.<br>Вам ${this.age} лет.<br>Ваш номер телефона: ${this.phone}.<br>Ваш адрес электронной почты: ${this.email}.<br>`)
     }
 }
-const A6 = new Car('Ауди А6')
-A6.start();
-A6.upShift(60, 10)
-A6.upShift(60, 20)
-A6.upShift(60, 20)
-A6.downShift(60, 20)
-A6.finish()
+
+const jaMorant = new Contact('Ja Morant', 21, '+375 (29) 555-44-22', 'jaMorant@gmail.com')
+jaMorant.addContact()
+jaMorant.checkContact()
+jaMorant.showContact()
+const johnKonchar = new Contact('John Konchar', 24, '+375 (29) 333-44-22', 'johnKonchar@gmail.com')
+johnKonchar.addContact()
+johnKonchar.checkContact()
+johnKonchar.showContact()
