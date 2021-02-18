@@ -93,7 +93,7 @@
 
 document.write('<br>Задание 4. Машина.<br>')
 let distance = 0;
-const Car = function(number, model) {
+const Car = function(model) {
     this.number = number;
     this.model = model;
     this.inWork = false;
@@ -103,6 +103,7 @@ const Car = function(number, model) {
     }
     this.finish = function() {
         this.inWork = false;
+        return document.write(`${this.model} проехала  расстояние равное ${distance.toFixed(2)} км.<br>`);  
     }
     this.upShift = function(time, speed) {
         if (this.inWork === false){
@@ -110,7 +111,7 @@ const Car = function(number, model) {
         } else {
             this.gear++
             distance += (time / 60) * speed;
-            return document.write(`${this.model} проехала вперед ${time} минут со скоростью ${speed} км/ч  расстояние равное ${Math.round(distance, -2)} км.<br>`);  
+            // return document.write(`${this.model} на ${this.gear} передаче проехала вперед ${time} минут со скоростью ${speed} км/ч расстояние равное ${distance.toFixed(2)} км.<br>`);  
         }
     }
     this.downShift = function(time, speed) {
@@ -119,22 +120,22 @@ const Car = function(number, model) {
         } else {
             this.gear--
             distance += (time / 60) * speed;
-            return document.write(`${this.model} проехала вперед ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);  
+            // return document.write(`${this.model} на ${this.gear} передаче проехала вперед ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);  
         }
     }
     this.reverseGear = function(time, speed){
         if (this.gear > 0) {
             document.write('Вы сломали коробку переключения перердач.<br>');
         } else {
-            distance = (time / 60) * speed;
-            return document.write(`${this.model} проехала назад ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);        
+            distance += (time / 60) * speed;
+            // return document.write(`${this.model} проехала назад ${time} минут со скоростью ${speed} км/ч  расстояние равное ${distance.toFixed(2)} км.<br>`);        
         }
     }
 }
-const A6 = new Car('1234', 'АудиА6')
+const A6 = new Car('Ауди А6')
 A6.start();
-A6.upShift(5, 15)
-A6.upShift(5, 25)
-A6.upShift(5, 45)
-A6.downShift(5, 25)
-
+A6.upShift(60, 10)
+A6.upShift(60, 20)
+A6.upShift(60, 20)
+A6.downShift(60, 20)
+A6.finish()
