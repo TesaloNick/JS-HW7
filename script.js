@@ -35,16 +35,41 @@
 //         }
 //     }
 // }
-
 // const sum = new Calculator(8,2);
 // sum.start();
 // sum.doCalculate();
 // sum.finish();
 
-document.write('Задание 2. Лампочка.<br>')
-const Lamp = function(power, electricityCost) {
+// document.write('<br>Задание 2. Лампочка.<br>')
+// const Lamp = function(power, electricityCost) {
+//     this.power = power;
+//     this.electricityCost = electricityCost;
+//     this.inWork = false;
+//     this.start = function() {
+//         this.inWork = true;
+//     }
+//     this.finish = function() {
+//         this.inWork = false;
+//     }
+//     this.workingHours = function(LampHourCounter) {
+//         let cost = 0;
+//         if (this.inWork === false){
+//             document.write('Лампочка выключена.<br>');
+//         } else {
+//             cost = ((LampHourCounter * this.power)/ 100) * this.electricityCost;
+//             return document.write(`Стоимость работы за ${LampHourCounter} часов равна ${cost} рублей.<br>`);
+//         }
+//     }
+// }
+// const coolLamp = new Lamp(100, 20)
+// coolLamp.start();
+// coolLamp.workingHours(5)
+
+document.write('<br>Задание 3. Чайник.<br>')
+const Kettle = function(power, kettleVolume, volumeOfWater) {
     this.power = power;
-    this.electricityCost = electricityCost;
+    this.kettleVolume = kettleVolume;
+    this.volumeOfWater = volumeOfWater;
     this.inWork = false;
     this.start = function() {
         this.inWork = true;
@@ -52,18 +77,16 @@ const Lamp = function(power, electricityCost) {
     this.finish = function() {
         this.inWork = false;
     }
-    this.workingHours = function(workingLampCounter) {
-        let cost = 0;
+    this.kettleBoil = function(startingTemperature) {
+        boilTime = 0;
         if (this.inWork === false){
-            document.write('Лампочка выключена.<br>');
+            document.write('Чайник выключен.<br>');
         } else {
-            cost = ((workingLampCounter * this.power)/ 100) * this.electricityCost;
-            return document.write(`Стоимость работы за ${workingLampCounter} часов равна ${cost} рублей.<br>`);
+            boilTime = (volumeOfWater*(100-startingTemperature)*0.007)/(kettleVolume*power);
+            return document.write(`Время закипания чайника при мощности ${this.power} кВт, общем объеме чайника ${this.kettleVolume} л и объеме воды в чайнике ${this.volumeOfWater} л равно ${Math.round(boilTime*60)} минут.<br>`);
         }
     }
 }
-const coolLamp = new Lamp(100, 20)
-coolLamp.start();
-coolLamp.workingHours(5)
-
-
+const coolKettle = new Kettle(2.5, 2, 1)
+coolKettle.start();
+coolKettle.kettleBoil(25)
